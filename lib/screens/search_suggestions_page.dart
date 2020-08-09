@@ -23,6 +23,7 @@ class SearchSuggestionsPage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return ListTile(
                           onTap: () {
+                            Navigator.pop(context);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -75,6 +76,7 @@ class SearchSuggestionsPage extends StatelessWidget {
                       );
                     },
                     onSubmitted: (value) {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

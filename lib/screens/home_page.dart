@@ -39,9 +39,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       IconButton(
                         icon: Icon(Icons.search),
-                        onPressed: () {
-                          print("s tapped");
-                        },
+                        onPressed: () {},
                       ),
                       IconButton(
                         icon: Icon(Icons.mic),

@@ -7,8 +7,9 @@ class WebViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: WebView(
-        initialUrl: "https://www.google.com/search?q=$query",
+        initialUrl: "https://google.com/search?q=$query",
       ),
     );
   }
