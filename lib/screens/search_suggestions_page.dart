@@ -1,3 +1,4 @@
+import 'package:astrodon_browser/screens/webview_page.dart';
 import 'package:astrodon_browser/state/search_suggestions_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,16 @@ class SearchSuggestionsPage extends StatelessWidget {
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WebViewPage(
+                                  query: snapshot.data[index],
+                                ),
+                              ),
+                            );
+                          },
                           leading: IconButton(
                             icon: Icon(Icons.arrow_downward),
                             onPressed: () {
@@ -60,9 +70,20 @@ class SearchSuggestionsPage extends StatelessWidget {
                     ),
                     onChanged: (value) {
                       Provider.of<SearchSuggestionsBloc>(context, listen: false)
-                          .getSuggestions(value.trim());
+                          .getSuggestions(
+                        value.trim(),
+                      );
                     },
-                    onSubmitted: (value) {},
+                    onSubmitted: (value) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WebViewPage(
+                            query: value,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
