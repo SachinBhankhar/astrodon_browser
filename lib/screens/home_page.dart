@@ -39,14 +39,56 @@ class HomePage extends StatelessWidget {
                     children: [
                       IconButton(
                         icon: Icon(Icons.search),
-                        onPressed: () {},
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.mic),
                         onPressed: () {
-                          print("mic tapped");
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                color: Color(0xff737373),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.white),
+                                    child: Column(
+                                      children: [],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
                         },
                       ),
+                      /*     IconButton(
+                        icon: Icon(Icons.mic),
+                        onPressed: () async {
+                          final speech = stt.SpeechToText();
+                          String text = "";
+                          bool available = await speech.initialize();
+                          if (available) {
+                            speech.listen(
+                              onResult: (SpeechRecognitionResult result) {
+                                print(result);
+                                text = result.recognizedWords;
+                              },
+                            );
+                          } else {
+                            print(
+                                "The user has denied the use of speech recognition.");
+                          }
+                          if (text != "") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WebViewPage(query: text),
+                              ),
+                            );
+                          }
+                        },
+                      ),*/
                     ],
                   ),
                 ),
