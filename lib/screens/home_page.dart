@@ -1,9 +1,17 @@
+import 'package:astrodon_browser/custom_widgets/search_engines_radio_menu_widget.dart';
 import 'package:astrodon_browser/screens/search_suggestions_page.dart';
 import 'package:astrodon_browser/state/search_suggestions_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  //TODO:Make the value persistent
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,26 +48,7 @@ class HomePage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.search),
                         onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                color: Color(0xff737373),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.rectangle,
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Colors.white),
-                                    child: Column(
-                                      children: [],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          );
+                          showSearchEnginesBottomSheet(context);
                         },
                       ),
                       /*     IconButton(
@@ -97,6 +86,15 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void showSearchEnginesBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SearchEnginesRadioMenu();
+      },
     );
   }
 }
